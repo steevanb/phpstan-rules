@@ -1,0 +1,7 @@
+includes:
+    - ../../../../extension.neon
+parameters:
+    steevanbPhpStanRules:
+        disallowConstantsInTests:
+            testsDirectories!:
+                - tests/Fixture/Extension/DisallowConstantsInTests/Tests

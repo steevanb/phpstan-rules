@@ -1,0 +1,5 @@
+/.claude/settings.local.json
+/composer.lock
+/vendor
+/var
+__pycache__

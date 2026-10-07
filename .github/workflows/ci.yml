@@ -1,0 +1,38 @@
+name: CI
+on:
+    push:
+        branches: ['**']
+
+jobs:
+    validate:
+        name: validate
+        runs-on: ubuntu-latest
+        steps:
+            -
+                name: Checkout repository
+                uses: actions/checkout@v7
+            -
+                # composer.lock is not committed, so the key follows composer.json: bin/ci/start.py runs
+                # composer update anyway, the cache only saves the downloads.
+                name: Composer cache
+                uses: actions/cache@v6
+                with:
+                    path: vendor
+                    key: composer_${{ hashFiles('composer.json') }}
+                    restore-keys: composer_
+            -
+                name: Login to ghcr.io
+                run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u steevanb --password-stdin
+            -
+                # bin/vendor.py mounts this file into /composer/auth.json, and bin/ci/start.py needs it
+                # to install steevanb/python-devops from its VCS repository.
+                name: Create composer auth.json
+                run: |
+                    mkdir -p ~/.config/composer
+                    printf '{"github-oauth":{"github.com":"%s"}}' "${{ secrets.GHCR_TOKEN }}" > ~/.config/composer/auth.json
+            -
+                name: bin/ci/start.py
+                run: bin/ci/start.py -v
+            -
+                name: bin/ci/validate.py
+                run: bin/ci/validate.py --theme=summary -v

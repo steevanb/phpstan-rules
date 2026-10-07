@@ -1,0 +1,36 @@
+parameters:
+    steevanbPhpStanRules:
+        coverageTarget:
+            testNamespacePrefixes: []
+            targetNamespacePrefixes: []
+        disallowConstantsInTests:
+            testsDirectories:
+                - tests
+parametersSchema:
+    steevanbPhpStanRules: structure([
+        coverageTarget: structure([
+            testNamespacePrefixes: listOf(string()),
+            targetNamespacePrefixes: listOf(string()),
+        ]),
+        disallowConstantsInTests: structure([
+            testsDirectories: listOf(string()),
+        ]),
+    ])
+services:
+    -
+        class: Steevanb\PhpStanRules\Rule\CoverageTargetRule
+        arguments:
+            testNamespacePrefixes: %steevanbPhpStanRules.coverageTarget.testNamespacePrefixes%
+            targetNamespacePrefixes: %steevanbPhpStanRules.coverageTarget.targetNamespacePrefixes%
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Steevanb\PhpStanRules\Extension\DisallowConstantsInTestsExtension
+        arguments:
+            testsDirectories: %steevanbPhpStanRules.disallowConstantsInTests.testsDirectories%
+        tags:
+            - phpstan.restrictedClassConstantUsageExtension
+    -
+        class: Steevanb\PhpStanRules\Rule\DisallowUnnecessaryNamedArgumentsRule
+        tags:
+            - phpstan.rules.rule

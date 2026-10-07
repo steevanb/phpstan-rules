@@ -1,0 +1,50 @@
+{
+    "name": "steevanb/phpstan-rules",
+    "description": "PHPStan rules: unnecessary named arguments, one mirrored coverage target per test, no class constants in tests",
+    "license": "Apache-2.0",
+    "type": "phpstan-extension",
+    "keywords": [
+        "phpstan",
+        "phpstan-rules",
+        "static-analysis"
+    ],
+    "require": {
+        "php": "^8.3",
+        "phpstan/phpstan": "^2.1.13",
+        "steevanb/php-collection": "^6.3"
+    },
+    "require-dev": {
+        "brianium/paratest": "~7.24.0",
+        "phpunit/phpunit": "~13.3.0",
+        "steevanb/python-devops": "~0.10.0"
+    },
+    "repositories": [
+        {
+            "name": "steevanb/python-devops",
+            "type": "vcs",
+            "url": "https://github.com/steevanb/python-devops.git"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Steevanb\\PhpStanRules\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Steevanb\\PhpStanRules\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "extension.neon"
+            ]
+        }
+    }
+}
