@@ -1,0 +1,29 @@
+{
+    "symbol-whitelist": [
+        "PhpParser\\Node",
+        "PhpParser\\Node\\Attribute",
+        "PhpParser\\Node\\Expr\\CallLike",
+        "PhpParser\\Node\\Expr\\FuncCall",
+        "PhpParser\\Node\\Expr\\MethodCall",
+        "PhpParser\\Node\\Expr\\New_",
+        "PhpParser\\Node\\Expr\\StaticCall",
+        "PhpParser\\Node\\Identifier",
+        "PhpParser\\Node\\Name",
+        "PHPStan\\Analyser\\Scope",
+        "PHPStan\\Node\\InClassNode",
+        "PHPStan\\Reflection\\ClassConstantReflection",
+        "PHPStan\\Reflection\\ExtendedMethodReflection",
+        "PHPStan\\Reflection\\FunctionReflection",
+        "PHPStan\\Reflection\\ParametersAcceptorSelector",
+        "PHPStan\\Reflection\\ReflectionProvider",
+        "PHPStan\\Rules\\IdentifierRuleError",
+        "PHPStan\\Rules\\RestrictedUsage\\RestrictedClassConstantUsageExtension",
+        "PHPStan\\Rules\\RestrictedUsage\\RestrictedUsage",
+        "PHPStan\\Rules\\Rule",
+        "PHPStan\\Rules\\RuleErrorBuilder",
+        "PHPStan\\Type\\Constant\\ConstantStringType",
+        "PHPUnit\\Framework\\Attributes\\CoversClass",
+        "PHPUnit\\Framework\\Attributes\\CoversTrait",
+        "PHPUnit\\Framework\\TestCase"
+    ]
+}
